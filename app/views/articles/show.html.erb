@@ -1,4 +1,7 @@
 <h1><%= @article.title %></h1>
+<h2>
+<%= link_to @article.category.name, category_path(@article.category)  %>
+</h2>
 
 <div class="usa-section-light">
 	<div class="usa-grid">

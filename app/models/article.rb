@@ -16,11 +16,19 @@ class Article < ActiveRecord::Base
   		self.tags = new_or_found_tags
 	end
 
-	def category_name
+	def category_name 
+		if self.category.blank? 
+			'Uncategorized' 
+		else
+			self.category.name
+		end
+	end
+
+	def category_names
 		Category.all.pluck(:name)
 	end	
 
-	def category_name=(category_string)
+	def category_names=(category_string)
 		p category_string
 		self.category = Category.find_by(name: category_string)
 	end
