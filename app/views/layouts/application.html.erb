@@ -7,9 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="flash"><%= flash.notice %></p>
-<div id="container">
-    <div id="content">
+<% if flash[:notice] %>
+  <div class="usa-grid usa-color-outline">
+    <div class="usa-width-one-third">
+      <div class="usa-color-text usa-color-text-green">
+        <%= flash.notice %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="usa-grid usa-section usa-content usa-layout-docs" id="main-content">
+    <div class="usa-width-three-fourths usa-layout-docs-main_content">
       <%= yield %>
       <hr>
       <h6>

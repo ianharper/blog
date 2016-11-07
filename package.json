@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "my blog!",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianharper/blog.git"
+  },
+  "author": "Ian Harper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianharper/blog/issues"
+  },
+  "homepage": "https://github.com/ianharper/blog#readme",
+  "dependencies": {
+    "uswds": "0.13.1"
+  }
+}

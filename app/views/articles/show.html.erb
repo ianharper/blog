@@ -1,16 +1,35 @@
 <h1><%= @article.title %></h1>
-<p>
-  Tags:
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
-  <% end %>
-</p>
-<% if @article.image.exists? %>
-	<p><%= image_tag @article.image.url(:large)  %></p>
-<% end %>
-<p><%= @article.body %></p>
-<%= link_to "<< Back to Articles List", articles_path %>
-<% if logged_in? %>
-	<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
-	<%= link_to "edit", edit_article_path(@article) %>
-<% end %>
+
+<div class="usa-section-light">
+	<div class="usa-grid">
+		<section class="usa-width-two-thirds">
+			<div class="usa-color-text usa-color-text-gray-dark">
+				<%= @article.body %>
+			</div>
+		</section>
+
+		<section class="usa-width-one-third">
+			<% if @article.image.exists? %>
+				<p><%= image_tag @article.image.url(:large)  %></p>
+			<% end %>
+		</section>
+	</div>
+</div>
+
+<div class="usa-grid">
+		<p>
+		  Tags:
+		  <% @article.tags.each do |tag| %>
+		    <%= link_to tag.name, tag_path(tag) %>
+		  <% end %>
+		</p>
+	</div>
+
+	<div class="usa-width-one-whole">
+		<%= link_to "<< Back to Articles List", articles_path %>
+		<% if logged_in? %>
+			<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+			<%= link_to "edit", edit_article_path(@article) %>
+		<% end %>
+	</div>
+</div>
