@@ -5,6 +5,7 @@ Blog::Application.routes.draw do
   resources :tags
   resources :authors
   resources :author_sessions, only: [ :new, :create, :destroy ]
+  resources :categories
 
   get 'login'  => 'author_sessions#new'
   get 'logout' => 'author_sessions#destroy'
