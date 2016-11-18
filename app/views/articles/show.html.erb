@@ -1,13 +1,13 @@
 <h1><%= @article.title %></h1>
 <h2>
-<%= link_to @article.category.name, category_path(@article.category)  %>
+<%= link_to @article.category_name, category_path(@article.category)  %>
 </h2>
 
 <div class="usa-section-light">
 	<div class="usa-grid">
 		<section class="usa-width-two-thirds">
 			<div class="usa-color-text usa-color-text-gray-dark">
-				<%= @article.body %>
+				<%= markdown(@article.body) %>
 			</div>
 		</section>
 

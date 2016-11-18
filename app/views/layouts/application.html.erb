@@ -7,29 +7,145 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if flash[:notice] %>
-  <div class="usa-grid usa-color-outline">
-    <div class="usa-width-one-third">
-      <div class="usa-color-text usa-color-text-green">
-        <%= flash.notice %>
+<header class="usa-header usa-header-basic" role="banner">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <button class="usa-menu-btn">Menu</button>
+      <div class="usa-logo" id="logo">
+        <em class="usa-logo-text">
+          <a href="/" accesskey="1" title="Home" aria-label="Home">ianbharper.com</a>
+        </em>
       </div>
     </div>
+
+    <% if flash[:notice] %>
+      <div class="usa-grid usa-color-outline">
+        <div class="usa-width-one-third">
+          <div class="usa-color-text usa-color-text-green">
+            <%= flash.notice %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <nav role="navigation" class="usa-nav">
+      <button class="usa-nav-close">
+        <img src="/assets/images/close.svg" alt="close">
+      </button>
+      <ul class="usa-nav-primary usa-accordion">
+        <li>
+          <%= link_to articles_path, class: 'usa-nav-link' do %>
+            <%= content_tag(:span, 'Posts') %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to category_path(2), class: 'usa-nav-link' do %>
+            <%= content_tag(:span, 'Beer') %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to category_path(3), class: 'usa-nav-link' do %>
+            <%= content_tag(:span, 'Code') %>
+          <% end %>
+        </li>
+      </ul>
+      <form class="usa-search usa-search-small">
+        <div role="search">
+          <label class="usa-sr-only" for="search-field-small">Search small</label>
+          <input id="search-field-small" type="search" name="search">
+          <button type="submit">
+            <span class="usa-sr-only">Search</span>
+          </button>
+        </div>
+      </form>
+    </nav>
   </div>
-<% end %>
-<div class="usa-grid usa-section usa-content usa-layout-docs" id="main-content">
-    <div class="usa-width-three-fourths usa-layout-docs-main_content">
-      <%= yield %>
-      <hr>
-      <h6>
-        <% if logged_in? %>
-          <%= "Logged in as #{current_user.email}" %>
-          <%= link_to "(logout)", logout_path %>
-        <% else %>
-          <%= link_to "(login)", login_path %>
-        <% end %>
-      </h6>
+</header>
+<div class="usa-overlay"></div>
+
+<!-- <div class="usa-grid-full"> -->
+
+  
+<!-- </div> -->
+
+<aside class="side-nav usa-layout-docs-sidenav">
+  <ul class="usa-sidenav-list">
+    <li>
+      <a href="javascript:void(0);">Parent link</a>
+    </li>
+    <li>
+      <a class="usa-current" href="javascript:void(0);">Current page</a>
+      <ul class="usa-sidenav-sub_list">
+        <li>
+          <a href="javascript:void(0);">Child link</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Child link</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Child link</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Child link</a>
+        </li>
+        <li>
+          <a class="usa-current" href="javascript:void(0);">Child Link</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void(0);">Parent link</a>
+    </li>
+  </ul>
+</aside>
+<main class="usa-grid usa-content usa-one-whole usa-layout-docs" id="main-content">
+  
+  <div class="usa-width-three-fourths usa-layout-docs-main_content">
+    <%= yield %>
+  </div>
+</main>
+
+<footer class="usa-footer usa-footer-slim" role="contentinfo">
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="javascript:void(0);">Return to top</a>
     </div>
-</div>
+    <div class="usa-footer-primary-section">
+      <div class="usa-grid-full">
+        <nav class="usa-footer-nav usa-width-one-full">
+          <ul class="usa-unstyled-list">
+            <li class="usa-width-one-twelfth usa-footer-primary-content">
+              <%= link_to 'Posts', articles_path, class: "usa-footer-primary-link" %>
+            </li>
+            <li class="usa-width-one-twelfth usa-footer-primary-content">
+              <%= link_to 'Beer', category_path(2), class: "usa-footer-primary-link" %>
+            </li>
+            <li class="usa-width-one-twelfth usa-footer-primary-content">
+              <%= link_to 'Code', category_path(3), class: "usa-footer-primary-link" %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="usa-footer-secondary_section">
+      <div class="usa-grid">
+        <div class="usa-footer-logo usa-width-one-half">
+          <!-- <img class="usa-footer-slim-logo-img" src="/assets/images/logo-img.png" alt="Logo image"> -->
+          <h3 class="usa-footer-slim-logo-heading">Ian B. Harper</h3>
+        </div>
+        <div class="usa-footer-contact-heading usa-width-one-twelfth">
+          <p>
+            <% if logged_in? %>
+              <%= "Logged in as #{current_user.email}" %>
+              <%= link_to "(logout)", logout_path %>
+            <% else %>
+              <%= link_to "(login)", login_path %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

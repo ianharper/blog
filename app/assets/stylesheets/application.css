@@ -14,3 +14,8 @@
  *= require_self
  */
  //= require uswds
+
+.side-nav {
+	width: 8em;
+	float: left;
+}

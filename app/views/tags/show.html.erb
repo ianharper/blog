@@ -2,6 +2,11 @@
 
 <ul>
   <% @tag.articles.each do |article| %>
-    <li><%= link_to article.title, article_path(article) %></li>
+    <div class="usa-media-block-body usa-width-one-third">
+			<%= content_tag('h3') do %>
+		     <%= link_to article.title, article_path(article)  %>
+		  <% end %>
+		  <%= content_tag('p', article.preview) %>
+		</div>
   <% end %>
 </ul>

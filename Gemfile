@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "paperclip"
 gem 'sorcery'
+gem 'redcarpet'
 
 
 # Use ActiveModel has_secure_password

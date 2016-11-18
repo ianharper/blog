@@ -32,4 +32,12 @@ class Article < ActiveRecord::Base
 		p category_string
 		self.category = Category.find_by(name: category_string)
 	end
+
+	def preview
+		if self.body.length > 150 
+			self.body.slice(0,150) + "..."
+		else
+			self.body.slice(0,150)
+		end
+	end
 end
